@@ -21,5 +21,10 @@ SkyJoystickSample.MAIN = METHOD({
 			uri : 'analogstick',
 			target : SkyJoystickSample.AnalogStickSample
 		});
+		
+		SkyJoystickSample.MATCH_VIEW({
+			uri : 'leftandright',
+			target : SkyJoystickSample.LeftAndRightSample
+		});
 	}
 });

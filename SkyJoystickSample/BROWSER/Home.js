@@ -61,6 +61,22 @@ SkyJoystickSample.Home = CLASS({
 						}
 					}
 				})]
+			}), DIV({
+				c : [H2({
+					style : {
+						marginBottom : 10
+					},
+					c : '좌우 키 샘플'
+				}), A({
+					c : IMG({
+						src : SkyJoystickSample.R('leftandright.png')
+					}),
+					on : {
+						tap : () => {
+							SkyJoystickSample.GO('leftandright');
+						}
+					}
+				})]
 			})]
 		}).appendTo(BODY);
 		
