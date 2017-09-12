@@ -45,6 +45,22 @@ SkyJoystickSample.Home = CLASS({
 						}
 					}
 				})]
+			}), DIV({
+				c : [H2({
+					style : {
+						marginBottom : 10
+					},
+					c : '아날로그 스틱 샘플'
+				}), A({
+					c : IMG({
+						src : SkyJoystickSample.R('analogstick.png')
+					}),
+					on : {
+						tap : () => {
+							SkyJoystickSample.GO('analogstick');
+						}
+					}
+				})]
 			})]
 		}).appendTo(BODY);
 		
