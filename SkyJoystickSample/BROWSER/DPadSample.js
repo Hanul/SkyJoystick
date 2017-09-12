@@ -56,14 +56,15 @@ SkyJoystickSample.DPadSample = CLASS({
 				img : IMG({
 					src : SkyJoystickSample.R('a.png')
 				}),
-				on : {
-					touchstart : () => {
-						console.log('Attack!');
-						sample.empty();
-						sample.append('Attack!');
-					}
+				value : 'A'
+			})],
+			on : {
+				change : (e, keySet) => {
+					console.log(keySet.getValue());
+					sample.empty();
+					sample.append(keySet.getValue());
 				}
-			})]
+			}
 		}).appendTo(wrapper);
 		
 		inner.on('close', () => {

@@ -46,14 +46,30 @@ SkyJoystickSample.LeftAndRightSample = CLASS({
 				img : IMG({
 					src : SkyJoystickSample.R('a.png')
 				}),
-				on : {
-					touchstart : () => {
-						console.log('Attack!');
-						sample.empty();
-						sample.append('Attack!');
-					}
+				value : 'A'
+			}), SkyJoystick.Key({
+				img : IMG({
+					src : SkyJoystickSample.R('b.png')
+				}),
+				value : 'B'
+			}), SkyJoystick.Key({
+				img : IMG({
+					src : SkyJoystickSample.R('x.png')
+				}),
+				value : 'X'
+			}), SkyJoystick.Key({
+				img : IMG({
+					src : SkyJoystickSample.R('y.png')
+				}),
+				value : 'Y'
+			})],
+			on : {
+				change : (e, keySet) => {
+					console.log(keySet.getValue());
+					sample.empty();
+					sample.append(keySet.getValue());
 				}
-			})]
+			}
 		}).appendTo(wrapper);
 		
 		inner.on('close', () => {

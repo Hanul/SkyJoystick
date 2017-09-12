@@ -11,6 +11,9 @@ SkyJoystickSample.Home = CLASS({
 				padding : 10
 			},
 			c : [DIV({
+				style : {
+					flt : 'left'
+				},
 				c : [H2({
 					style : {
 						marginBottom : 10
@@ -27,6 +30,10 @@ SkyJoystickSample.Home = CLASS({
 					}
 				})]
 			}), DIV({
+				style : {
+					marginLeft : 10,
+					flt : 'left'
+				},
 				c : [H2({
 					style : {
 						marginBottom : 10
@@ -46,6 +53,10 @@ SkyJoystickSample.Home = CLASS({
 					}
 				})]
 			}), DIV({
+				style : {
+					marginLeft : 10,
+					flt : 'left'
+				},
 				c : [H2({
 					style : {
 						marginBottom : 10
@@ -62,6 +73,10 @@ SkyJoystickSample.Home = CLASS({
 					}
 				})]
 			}), DIV({
+				style : {
+					marginLeft : 10,
+					flt : 'left'
+				},
 				c : [H2({
 					style : {
 						marginBottom : 10
@@ -77,7 +92,7 @@ SkyJoystickSample.Home = CLASS({
 						}
 					}
 				})]
-			})]
+			}), CLEAR_BOTH()]
 		}).appendTo(BODY);
 		
 		inner.on('close', () => {
