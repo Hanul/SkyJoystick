@@ -8,7 +8,6 @@ SkyJoystick.DPad45 = CLASS({
 		return {
 			style : {
 				position : 'fixed',
-				bottom : 10,
 				left : 10,
 				zIndex : 999
 			}
@@ -25,6 +24,18 @@ SkyJoystick.DPad45 = CLASS({
 		
 		self.append(img);
 		
+		img.on('load', () => {
+			EVENT.fireAll('resize');
+		});
+		
+		self.addStyle({
+			onDisplayResize : (width, height) => {
+				return {
+					top : height - self.getHeight() - 10
+				};
+			}
+		});
+		
 		self.on('touchstart', (e) => {
 			
 			let centerLeft = self.getLeft() + self.getWidth() / 2;
@@ -35,17 +46,29 @@ SkyJoystick.DPad45 = CLASS({
 				let mouseLeft = e.getLeft();
 				let mouseTop = e.getTop();
 				
-				if (mouseLeft < centerLeft) {
+				if (mouseLeft > centerLeft) {
 					if (mouseTop < centerTop) {
-						
+						if (direction !== 'up') {
+							direction = 'up';
+							self.fireEvent('up');
+						}
 					} else {
-						
+						if (direction !== 'right') {
+							direction = 'right';
+							self.fireEvent('right');
+						}
 					}
 				} else {
-					if (mouseTop < centerTop) {
-						
+					if (mouseTop > centerTop) {
+						if (direction !== 'down') {
+							direction = 'down';
+							self.fireEvent('down');
+						}
 					} else {
-						
+						if (direction !== 'left') {
+							direction = 'left';
+							self.fireEvent('left');
+						}
 					}
 				}
 			});
@@ -58,6 +81,8 @@ SkyJoystick.DPad45 = CLASS({
 				touchmoveEvent.remove();
 				touchendEvent.remove();
 			});
+			
+			e.stop();
 		});
 	}
 });

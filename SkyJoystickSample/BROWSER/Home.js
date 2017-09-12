@@ -26,6 +26,25 @@ SkyJoystickSample.Home = CLASS({
 						}
 					}
 				})]
+			}), DIV({
+				c : [H2({
+					style : {
+						marginBottom : 10
+					},
+					c : 'D-Pad 45도 샘플'
+				}), A({
+					c : IMG({
+						style : {
+							transform : 'rotate(45deg)'
+						},
+						src : SkyJoystickSample.R('dpad.png')
+					}),
+					on : {
+						tap : () => {
+							SkyJoystickSample.GO('dpad45');
+						}
+					}
+				})]
 			})]
 		}).appendTo(BODY);
 		

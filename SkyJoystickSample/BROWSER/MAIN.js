@@ -11,5 +11,10 @@ SkyJoystickSample.MAIN = METHOD({
 			uri : 'dpad',
 			target : SkyJoystickSample.DPadSample
 		});
+		
+		SkyJoystickSample.MATCH_VIEW({
+			uri : 'dpad45',
+			target : SkyJoystickSample.DPad45Sample
+		});
 	}
 });
