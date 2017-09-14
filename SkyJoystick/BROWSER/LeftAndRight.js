@@ -62,8 +62,11 @@ SkyJoystick.LeftAndRight = CLASS({
 			});
 			
 			let touchendEvent = EVENT('touchend', () => {
+				
 				touchmoveEvent.remove();
 				touchendEvent.remove();
+				
+				self.fireEvent('touchend');
 			});
 			
 			e.stop();

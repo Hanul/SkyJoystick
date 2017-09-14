@@ -82,8 +82,11 @@ SkyJoystick.DPad = CLASS({
 			});
 			
 			let touchendEvent = EVENT('touchend', (e) => {
+				
 				touchmoveEvent.remove();
 				touchendEvent.remove();
+				
+				self.fireEvent('touchend');
 			});
 			
 			e.stop();
