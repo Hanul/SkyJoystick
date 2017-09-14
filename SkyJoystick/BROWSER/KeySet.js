@@ -37,6 +37,11 @@ SkyJoystick.KeySet = CLASS({
 				}
 			});
 			
+			key.on('touchend', (e) => {
+				value = undefined;
+				self.fireEvent('touchend');
+			});
+			
 			self.append(key);
 			
 			if (keys.length === 3 && i === 0) {
