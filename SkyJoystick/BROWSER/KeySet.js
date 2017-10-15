@@ -8,7 +8,7 @@ SkyJoystick.KeySet = CLASS({
 		return {
 			style : {
 				position : 'fixed',
-				right : 10,
+				right : 20,
 				zIndex : 999
 			}
 		};
@@ -63,7 +63,7 @@ SkyJoystick.KeySet = CLASS({
 		self.addStyle({
 			onDisplayResize : (width, height) => {
 				return {
-					top : height - self.getHeight() - 10
+					top : height - self.getHeight() - 20
 				};
 			}
 		});

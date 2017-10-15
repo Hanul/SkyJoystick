@@ -8,7 +8,7 @@ SkyJoystick.AnalogStick = CLASS({
 		return {
 			style : {
 				position : 'fixed',
-				left : 10,
+				left : 20,
 				zIndex : 999
 			}
 		};
@@ -31,7 +31,7 @@ SkyJoystick.AnalogStick = CLASS({
 		self.addStyle({
 			onDisplayResize : (width, height) => {
 				return {
-					top : height - self.getHeight() - 10
+					top : height - self.getHeight() - 20
 				};
 			}
 		});
