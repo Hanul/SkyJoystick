@@ -8,7 +8,6 @@ SkyJoystick.AnalogStick = CLASS({
 		return {
 			style : {
 				position : 'fixed',
-				left : 20,
 				zIndex : 999
 			}
 		};
@@ -31,7 +30,8 @@ SkyJoystick.AnalogStick = CLASS({
 		self.addStyle({
 			onDisplayResize : (width, height) => {
 				return {
-					top : height - self.getHeight() - 20
+					left : WIN_WIDTH() / 32,
+					top : height - self.getHeight() - WIN_HEIGHT() / 18
 				};
 			}
 		});
@@ -43,15 +43,17 @@ SkyJoystick.AnalogStick = CLASS({
 			
 			let check = RAR(e, (e) => {
 				
-				let mouseLeft = e.getLeft();
-				let mouseTop = e.getTop();
-				
-				let _angle = Math.atan2(mouseTop - centerTop, mouseLeft - centerLeft) * 180 / Math.PI;
-				
-				if (angle !== _angle) {
-					angle = _angle;
-					self.fireEvent('change');
-				}
+				EACH(e.getPositions(), (position) => {
+					if (position.left < WIN_WIDTH() / 2) {
+						
+						let _angle = Math.atan2(position.top - centerTop, position.left - centerLeft) * 180 / Math.PI;
+						
+						if (angle !== _angle) {
+							angle = _angle;
+							self.fireEvent('change');
+						}
+					}
+				});
 			});
 			
 			let touchmoveEvent = EVENT('touchmove', (e) => {

@@ -8,7 +8,6 @@ SkyJoystick.DPad45 = CLASS({
 		return {
 			style : {
 				position : 'fixed',
-				left : 20,
 				zIndex : 999
 			}
 		};
@@ -31,7 +30,8 @@ SkyJoystick.DPad45 = CLASS({
 		self.addStyle({
 			onDisplayResize : (width, height) => {
 				return {
-					top : height - self.getHeight() - 20
+					left : WIN_WIDTH() / 32,
+					top : height - self.getHeight() - WIN_HEIGHT() / 18
 				};
 			}
 		});
@@ -43,34 +43,36 @@ SkyJoystick.DPad45 = CLASS({
 			
 			let check = RAR(e, (e) => {
 				
-				let mouseLeft = e.getLeft();
-				let mouseTop = e.getTop();
-				
-				if (mouseLeft > centerLeft) {
-					if (mouseTop < centerTop) {
-						if (direction !== 'up') {
-							direction = 'up';
-							self.fireEvent('up');
-						}
-					} else {
-						if (direction !== 'right') {
-							direction = 'right';
-							self.fireEvent('right');
+				EACH(e.getPositions(), (position) => {
+					if (position.left < WIN_HEIGHT() / 2) {
+						
+						if (position.left > centerLeft) {
+							if (position.top < centerTop) {
+								if (direction !== 'up') {
+									direction = 'up';
+									self.fireEvent('up');
+								}
+							} else {
+								if (direction !== 'right') {
+									direction = 'right';
+									self.fireEvent('right');
+								}
+							}
+						} else {
+							if (position.top > centerTop) {
+								if (direction !== 'down') {
+									direction = 'down';
+									self.fireEvent('down');
+								}
+							} else {
+								if (direction !== 'left') {
+									direction = 'left';
+									self.fireEvent('left');
+								}
+							}
 						}
 					}
-				} else {
-					if (mouseTop > centerTop) {
-						if (direction !== 'down') {
-							direction = 'down';
-							self.fireEvent('down');
-						}
-					} else {
-						if (direction !== 'left') {
-							direction = 'left';
-							self.fireEvent('left');
-						}
-					}
-				}
+				});
 			});
 			
 			let touchmoveEvent = EVENT('touchmove', (e) => {

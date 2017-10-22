@@ -8,7 +8,6 @@ SkyJoystick.KeySet = CLASS({
 		return {
 			style : {
 				position : 'fixed',
-				right : 20,
 				zIndex : 999
 			}
 		};
@@ -63,7 +62,8 @@ SkyJoystick.KeySet = CLASS({
 		self.addStyle({
 			onDisplayResize : (width, height) => {
 				return {
-					top : height - self.getHeight() - 20
+					right : WIN_WIDTH() / 32,
+					top : height - self.getHeight() - WIN_HEIGHT() / 18
 				};
 			}
 		});
@@ -74,17 +74,22 @@ SkyJoystick.KeySet = CLASS({
 		
 		let handler = (e) => {
 			
-			EACH(keys, (key, i) => {
-				
-				if (
-				value !== key.getValue() &&
-				e.getLeft() >= key.getLeft() &&
-				e.getLeft() <= key.getLeft() + key.getWidth() &&
-				e.getTop() >= key.getTop() &&
-				e.getTop() <= key.getTop() + key.getHeight()) {
+			EACH(e.getPositions(), (position) => {
+				if (position.left > WIN_HEIGHT() / 2) {
 					
-					value = key.getValue();
-					self.fireEvent('change');
+					EACH(keys, (key, i) => {
+						
+						if (
+						value !== key.getValue() &&
+						position.left >= key.getLeft() &&
+						position.left <= key.getLeft() + key.getWidth() &&
+						position.top >= key.getTop() &&
+						position.top <= key.getTop() + key.getHeight()) {
+							
+							value = key.getValue();
+							self.fireEvent('change');
+						}
+					});
 				}
 			});
 		};
