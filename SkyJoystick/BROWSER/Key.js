@@ -12,13 +12,7 @@ SkyJoystick.Key = CLASS({
 		let img = params.img;
 		let value = params.value;
 		
-		let direction;
-		
 		self.append(img);
-		
-		img.on('load', () => {
-			EVENT.fireAll('resize');
-		});
 		
 		self.on('touchstart', (e) => {
 			e.stop();

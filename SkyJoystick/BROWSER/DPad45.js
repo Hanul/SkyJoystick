@@ -8,6 +8,8 @@ SkyJoystick.DPad45 = CLASS({
 		return {
 			style : {
 				position : 'fixed',
+				left : 20,
+				bottom : 20,
 				zIndex : 999
 			}
 		};
@@ -19,22 +21,9 @@ SkyJoystick.DPad45 = CLASS({
 		
 		let img = params.img;
 		
-		let direction;
-		
 		self.append(img);
 		
-		img.on('load', () => {
-			EVENT.fireAll('resize');
-		});
-		
-		self.addStyle({
-			onDisplayResize : (width, height) => {
-				return {
-					left : WIN_WIDTH() / 32,
-					top : height - self.getHeight() - WIN_HEIGHT() / 18
-				};
-			}
-		});
+		let direction;
 		
 		self.on('touchstart', (e) => {
 			

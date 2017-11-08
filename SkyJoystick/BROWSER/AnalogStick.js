@@ -8,6 +8,8 @@ SkyJoystick.AnalogStick = CLASS({
 		return {
 			style : {
 				position : 'fixed',
+				left : 20,
+				bottom : 20,
 				zIndex : 999
 			}
 		};
@@ -19,22 +21,9 @@ SkyJoystick.AnalogStick = CLASS({
 		
 		let img = params.img;
 		
-		let angle;
-		
 		self.append(img);
 		
-		img.on('load', () => {
-			EVENT.fireAll('resize');
-		});
-		
-		self.addStyle({
-			onDisplayResize : (width, height) => {
-				return {
-					left : WIN_WIDTH() / 32,
-					top : height - self.getHeight() - WIN_HEIGHT() / 18
-				};
-			}
-		});
+		let angle;
 		
 		self.on('touchstart', (e) => {
 			
