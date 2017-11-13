@@ -8,7 +8,8 @@ SkyJoystickSample.Home = CLASS({
 		
 		let wrapper = DIV({
 			style : {
-				padding : 10
+				padding : 10,
+				textAlign : 'center'
 			},
 			c : [DIV({
 				style : {
@@ -89,6 +90,26 @@ SkyJoystickSample.Home = CLASS({
 					on : {
 						tap : () => {
 							SkyJoystickSample.GO('leftandright');
+						}
+					}
+				})]
+			}), DIV({
+				style : {
+					marginLeft : 10,
+					flt : 'left'
+				},
+				c : [H2({
+					style : {
+						marginBottom : 10
+					},
+					c : '게임 패드 샘플'
+				}), A({
+					c : IMG({
+						src : SkyJoystickSample.R('gamepad.png')
+					}),
+					on : {
+						tap : () => {
+							SkyJoystickSample.GO('gamepad');
 						}
 					}
 				})]

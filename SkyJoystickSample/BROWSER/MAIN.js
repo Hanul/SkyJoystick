@@ -26,5 +26,10 @@ SkyJoystickSample.MAIN = METHOD({
 			uri : 'leftandright',
 			target : SkyJoystickSample.LeftAndRightSample
 		});
+		
+		SkyJoystickSample.MATCH_VIEW({
+			uri : 'gamepad',
+			target : SkyJoystickSample.GamePadSample
+		});
 	}
 });
