@@ -20,11 +20,13 @@ SkyJoystick.GamePadController = CLASS((cls) => {
 		
 		init : (inner, self, handlers) => {
 			//REQUIRED: handlers
+			//OPTIONAL: handlers.onConnected
 			//OPTIONAL: handlers.onKeydown
 			//OPTIONAL: handlers.onKeyup
 			//OPTIONAL: handlers.onChangeStick
 			//OPTIONAL: handlers.onReleaseStick
 			
+			let onConnected = handlers.onConnected;
 			let onKeydown = handlers.onKeydown;
 			let onKeyup = handlers.onKeyup;
 			let onChangeStick = handlers.onChangeStick;
@@ -34,10 +36,17 @@ SkyJoystick.GamePadController = CLASS((cls) => {
 			let beforeStickMovedMap = [];
 			let beforeAngleMap = [];
 			
+			let isConnected = false;
+			
 			let step;
 			OVERRIDE(self.step, (origin) => {
 				
 				step = self.step = (deltaTime) => {
+					
+					if (onConnected !== undefined && isConnected !== true && checkIsConnected() === true) {
+						onConnected();
+						isConnected = true;
+					}
 					
 					let gamePadDataSet = navigator.getGamepads();
 					let gamePadDataLength = gamePadDataSet.length;
@@ -152,7 +161,7 @@ SkyJoystick.GamePadController = CLASS((cls) => {
 				};
 			});
 			
-			self.appendTo(SkyEngine.Screen);
+			self.appendTo(SkyEngine.Screen.getNonePausableNode());
 		}
 	};
 });
