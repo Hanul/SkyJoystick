@@ -33,7 +33,7 @@ SkyJoystick.DPad45 = CLASS({
 			let check = RAR(e, (e) => {
 				
 				EACH(e.getPositions(), (position) => {
-					if (position.left < WIN_HEIGHT() / 2) {
+					if (position.left < WIN_WIDTH() / 2) {
 						
 						if (position.left > centerLeft) {
 							if (position.top < centerTop) {
@@ -72,6 +72,8 @@ SkyJoystick.DPad45 = CLASS({
 				
 				touchmoveEvent.remove();
 				touchendEvent.remove();
+				
+				direction = undefined;
 				
 				self.fireEvent('touchend');
 			});

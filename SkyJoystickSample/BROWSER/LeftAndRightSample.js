@@ -28,15 +28,15 @@ SkyJoystickSample.LeftAndRightSample = CLASS({
 				src : SkyJoystickSample.R('leftandright.png')
 			}),
 			on : {
-				right : () => {
-					console.log('Right!');
-					sample.empty();
-					sample.append('Right!');
-				},
 				left : () => {
 					console.log('Left!');
 					sample.empty();
 					sample.append('Left!');
+				},
+				right : () => {
+					console.log('Right!');
+					sample.empty();
+					sample.append('Right!');
 				}
 			}
 		}).appendTo(wrapper);

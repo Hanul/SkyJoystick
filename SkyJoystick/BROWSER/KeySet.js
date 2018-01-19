@@ -68,7 +68,7 @@ SkyJoystick.KeySet = CLASS({
 		let handler = (e) => {
 			
 			EACH(e.getPositions(), (position) => {
-				if (position.left > WIN_HEIGHT() / 2) {
+				if (position.left > WIN_WIDTH() / 2) {
 					
 					EACH(keys, (key, i) => {
 						

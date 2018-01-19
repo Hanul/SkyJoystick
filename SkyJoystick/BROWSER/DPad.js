@@ -33,7 +33,7 @@ SkyJoystick.DPad = CLASS({
 			let check = RAR(e, (e) => {
 				
 				EACH(e.getPositions(), (position) => {
-					if (position.left < WIN_HEIGHT() / 2) {
+					if (position.left < WIN_WIDTH() / 2) {
 						
 						let angle = Math.atan2(position.top - centerTop, position.left - centerLeft) * 180 / Math.PI;
 						
@@ -76,6 +76,8 @@ SkyJoystick.DPad = CLASS({
 				
 				touchmoveEvent.remove();
 				touchendEvent.remove();
+				
+				direction = undefined;
 				
 				self.fireEvent('touchend');
 			});
